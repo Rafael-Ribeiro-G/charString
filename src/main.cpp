@@ -103,9 +103,76 @@ void textoChar()
   // ! ATOI (A -> ASCII; TO -> PARA; I -> INT)
   int idade = atoi(idadeTexto);
   Serial.println(idade);
+
 }
 
 void textoString()
 {
+  // ! =============================================
+  // ! USANDO String
+  // ! =============================================
+
+  // ! Quando tem atributo dentro de classe deve começar com '_'
+  
+  String nome = "Rafael";
+  String curso = "Desenvolvimento de Sistemas";
+  String mensagem = "Ola";
+
+  // ! Concatenando String
+  mensagem = mensagem + "," + nome + "! Bem vindo ao curso de " + curso + ".";
+  Serial.println(mensagem);
+
+  // ! Tamanho do String
+  int tamanhoMensagem = mensagem.length();
+  Serial.print("Tamanho da String em letras: ");
+  Serial.println(tamanhoMensagem);
+
+
+  // ! ===========ACESSAR UMA POSIÇÃO ESPECÍFICA===========
+  // ! Acessando um caractere em posição específica
+  char primeiraLetra = mensagem.charAt(0);
+  Serial.print("Primeira letra: ");
+  Serial.println(primeiraLetra);
+
+  char segundaLetra = mensagem[1];
+  Serial.println(segundaLetra);
+  // ! ====================================================
+
+
+  // ! Procurando um texto dentro da String 
+  // ! indexOf -> ENDEREÇO DE
+  int posicaoTextoProcurado = mensagem.indexOf("curso");
+  Serial.println(posicaoTextoProcurado);
+
+  // ! Extraindo um texto dentro da String
+  int inicioNomeCurso = posicaoTextoProcurado + 9; // ! Posição da palavra curso + 9 caracteres
+  Serial.println(mensagem.substring(inicioNomeCurso, tamanhoMensagem - 1)); // ! -1 tira o ponto final
+
+  // ! Substituindo um trxmo dentro da String
+  mensagem.replace("Ola,", ("Oi, tudo bem? "));
+  Serial.println(mensagem);
+
+  // ! Convertendo para maiúsculas
+  mensagem.toUpperCase();
+  Serial.println(mensagem);
+
+  // ! Convertendo para minúsculas
+  mensagem.toLowerCase();
+  Serial.println(mensagem);
+
+  // ! Convertendo texto numérico para inteiro
+  String textoNumero = "123";
+  int numero = textoNumero.toInt();
+  Serial.println(numero * 2);
+
+  // ! Verificando se a String está vazia
+  String textoVazio = "";
+  if(textoVazio.length() == 0)
+  Serial.println("O texto está vazio"); 
+
+  // ! Convertendo String para const char*
+  // ! Isso é útil quando alguma biblioteca espera texto estilo C
+  const char* textoComChar = mensagem.c_str();
+  Serial.println(textoComChar);
 
 }
