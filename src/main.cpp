@@ -73,6 +73,36 @@ void textoChar()
   // ! Alterando caracteres individualmente
   nomeAluno[5] = 'l';
   Serial.println(nomeAluno);
+
+  // ! Copiando outro texto para dentro do vetor
+  // ! CUIDADO: O VETOR PRECISA TER ESPAÇO SUFICIENTE
+
+  strcpy(nomeAluno, "Guilherme");
+  Serial.print(nomeAluno);
+
+  // ! Concatenando de texo ao final
+  char frase[40] = "Hello ";
+  strcat(frase, "World!");
+  Serial.println(frase);
+
+  // ! Procurando um caractere no texto
+  char* posicaoLetra = strchr(frase, 'W');
+
+  if(posicaoLetra != NULL)
+  {
+    Serial.println("Letra encontrada: ");
+    Serial.println(posicaoLetra);
+  }
+  else
+  {
+    Serial.println("Letra não encontrada");
+  }
+
+  // ! Convertendo texto numérico para inteiro
+  char idadeTexto[] = "45"; // ! 52, 53, \0
+  // ! ATOI (A -> ASCII; TO -> PARA; I -> INT)
+  int idade = atoi(idadeTexto);
+  Serial.println(idade);
 }
 
 void textoString()
