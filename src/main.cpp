@@ -104,6 +104,64 @@ void textoChar()
   int idade = atoi(idadeTexto);
   Serial.println(idade);
 
+  // ! Montando texto
+  char buffer[100];
+  char *local = "Sala de Aula";
+  float temperatura = 26.4;
+  int umidade = 58;
+
+  // ! Informa o tamanho máximo do meu buffer
+  // ! %s ---> String
+  // ! %f ---> float
+  // ! %d ---> int 
+  // ! %% ---> é o próprio %
+  // ! \n ---> Linha de baixo
+  // ! \r ---> Volta para o começo da linha
+  snprintf(buffer, sizeof(buffer), "%s | Temperatura: %f | Umidade: %d %% \n\r", local, temperatura, umidade);
+  Serial.print(buffer);
+  // ! Imprime o tamanho do Buffer
+  Serial.printf("O tamanho do Buffer é: %lu \n\r", sizeof(buffer));
+
+  // ! snprintf monta um texto dentro de um vetor de char
+  // ! Sintaxe: snprintf(variavelOndeSeraMontadaOTexto, TamanhoMaximoDoTexto, TextoComEspecificadores, ItensDeFormato)
+  // ! Isso é muito útil quando depois você quer:
+  // ! - Salvar o texto em uma variável;
+  // ! - Mandar para o display;
+  // ! - Imprimir na Serial;
+  // ! - Enviar para o MQTT (IoT);
+  // !
+  // ! ESPECIFICADORES:
+  // !
+  // ! %d ou %i ---> INT
+  // ! %u ---> UNSGINED INT
+  // ! %ld ---> LONG
+  // ! %lu ---> UNSIGNED LONG
+  // ! %f ---> FLOAT
+  // ! %e ---> NOTAÇÃO CIENTÍFICA
+  // ! %g ---> FLOAT, FORMATO MAIS CURTO
+  // ! %c ---> CHAR
+  // ! %s ---> CHAR* (STRING)
+  // ! %x ou %X ---> HEXADECIMAL MINÚSUCULO/MAIÚSCULO
+  // ! %o ---> OCTAL
+  // ! %p ---> PONTEIRO
+  // ! %% ---> O PRÓPRIO %
+  // ! 
+  // ! Flag, largura e precisão:
+  // ! 
+  // ! %5d ---> IMPRIME COM LARGURA MÍNIMA DE 5 ALINHADO A DIREITA [    3] | [  100] | [10000000]
+  // ! %-2d ---> IMPRIME COM LARGURA MÍNIMA DE 4 ALINHADO A ESQUERDA [3    ] | [100 ] | [123456]
+  // ! %03d ---> COMPLETA COM ZEROS A ESQUERDA [003] 
+  // ! %+d ---> SEMPRE MOSTRA O SINAL [+3] | [-3]
+  // ! %.2f ---> 2 CASAS DECIMAIS NUM FLOAT
+  // ! %4.2f ---> LARGURA MÍNIMA 4 A DIREITA COM 2 CASAS DECIMAIS
+  // ! %02X ---> HEXADECIMAL COM 2 DÍGITOS [0F] | [3A]
+  // ! %#x ---> IMPRIME O PREFIXO 0X [0x2a] | [0xF]
+  // ! %.3s ---> SOMENT EOS TRÊS PRIMEIROS CARACTERES DA STRING
+  // !
+  // ! int largura = 3;
+  // ! numero = 9;
+  // ! %*d ---> LARGURA PASSADA COMO ARGUMENTO EX.: snprintf(buffer, sizeof(buffer), "Número %*d", largura, numero);
+  // ! Serial.print(buffer) -> [ 9]
 }
 
 void textoString()
